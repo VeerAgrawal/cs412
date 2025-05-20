@@ -1,0 +1,32 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>Hello, world!</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'home_page' %}">Home</a></li>
+                <li><a href="{% url 'about_page' %}">About</a></li>
+            </ul>
+        </nav>
+        
+
+        <!--  PAGE SPECIFIC CONTENT OVER HERE -->
+        
+        {% block content %}
+        {% endblock %}
+
+
+        <footer>
+            The current time is {{time}}. <br>
+
+            Here are some randome letters and numbers - {{letter1}} - that was the first one, 
+            this is anouther one - {{letter2}} - and heres a cool number: {{number}}
+        </footer>
+
+    </body>
+</html>
