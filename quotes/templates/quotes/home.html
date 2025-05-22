@@ -1,0 +1,18 @@
+{% extends 'quotes/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+
+<div class="quote-section">
+    <p>"{{ todaysQuote }}"</p>
+</div>
+
+<div class="image-section">
+   <img src="{% static 'images/' %}{{ todaysImage }}" alt="image">
+</div>
+</main>
+
+
+{% endblock %}

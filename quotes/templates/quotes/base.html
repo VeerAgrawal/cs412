@@ -1,0 +1,43 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>daily quotes</title>
+        <link rel="stylesheet" href="{% static 'styles_quotes.css' %}">
+
+    </head>
+    <header>
+        <h1>
+            RICK AND MORTY - Quote of the Day!
+        </h1>
+    </header>
+    <body>
+
+        <div class="sidebar"> 
+
+         <nav>
+            <ul>
+                <li><a href="{% url 'home_page' %}">Quote of the Day</a></li>
+                <li><a href="{% url 'showall_page' %}">All Quotes</a></li>
+                <li><a href="{% url 'about_page' %}">About</a></li>
+            </ul>
+          </nav>
+
+        </div>
+        
+        <!--  PAGE SPECIFIC CONTENT OVER HERE -->
+        
+        {% block content %}
+        {% endblock %}
+
+
+        <footer>
+
+            Rick and Morty Quotes Daily! <br>
+            {{date}} <br>
+            Brought to you By Veer Agrawal
+
+        </footer>
+
+    </body>
+</html>
