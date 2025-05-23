@@ -1,0 +1,44 @@
+<!-- formdata/templates/formdata/base.html -->
+{% load static %}
+
+<html>
+    <head>
+        <title>Indian Delights!</title>
+        <link rel="stylesheet" href="{% static 'styles_restaurant.css' %}"> 
+       
+    </head>
+
+    <body>
+        <div class="header">
+            <h1> Welcome to Indian Delights! </h1>
+
+        </div>
+
+
+        <div class="sidebar"> 
+
+         <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home Page</a></li>
+                <li><a href="{% url 'order' %}">Order Now!</a></li>
+        
+            </ul>
+          </nav>
+
+        </div>       
+    <div class="main-content">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+    </body>
+
+    <footer>
+        
+        Food Ordering Page For Indian Delights! <br>
+        123 Spice Lane, Boston, MA 11223, United States <br>
+        {{date}} <br>
+        Brought to you By Veer Agrawal
+
+    </footer>
+</html>

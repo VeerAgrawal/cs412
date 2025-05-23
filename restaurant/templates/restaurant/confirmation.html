@@ -1,0 +1,38 @@
+<!-- formdata/templates/formdata/confirmation.html -->
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="confirmation-box">
+
+<header> Congratulations {{ name }} <br> Your Order is Confirmed! </header>
+<h1>Order Confirmation</h1>
+
+    <p>Your Order will Be ready at {{orderTime}}</p>
+
+    <p>You ordered: {{ food_items|join:", " }}</p>
+    <p>Special Instructions: {{ instructions }}</p>
+
+    <p>Total Price: ${{ order_total }}</p>
+
+
+    <p>You selected: {{ delivery_or_pickup }}</p>
+
+    {% if delivery_or_pickup == "Delivery" %}
+    <p>Delivery Address: {{ address }}</p>
+    {% else %}
+    <p>Come pick up your Order at: <br>
+    Indian Delights <br>
+    123 Spice Lane, <br>
+    Boston, MA 11223 <br>
+    United States </p>
+    {% endif %}
+
+    <p>Payment Method: {{ payment }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Phone: {{ phone }}</p>
+    <p>Date: {{ date }}</p>
+
+</div>
+{% endblock %}

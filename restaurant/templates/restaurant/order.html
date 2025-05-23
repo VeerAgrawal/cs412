@@ -1,0 +1,54 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div>
+    <h1>Ordering Form</h1>
+
+    <form action="{% url 'confirmation' %}" method="POST">
+
+        {% csrf_token %}
+        Food Items: <br>
+        <input type="checkbox" name="food" value="Butter Chicken"> Butter Chicken $12.99<br>
+        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="food" value="Garlic Naan"> Add Garlic Naan - $3.49<br>
+        <input type="checkbox" name="food" value="Chicken Biryani"> Chicken Biryani $11.99 <br>
+        <input type="checkbox" name="food" value="Samosa"> Samosa $4.99 <br>
+        <input type="checkbox" name="food" value="Paneer Makhani">  Paneer Makhani $10.99 <br>
+        &nbsp;&nbsp;&nbsp;<input type="checkbox" name="food" value="Garlic Naan"> Add Garlic Naan - $3.49<br><br>
+
+        Todays Special: 
+        <input type="checkbox" name="food" value="{{ daily_special_name }}"> {{daily_special_name}} ${{ daily_special_price }}<br>
+
+        <!-- to pass the special name and price no matter what -->
+        <input type="hidden" name="daily_special_name" value="{{ daily_special_name }}">
+        <input type="hidden" name="daily_special_price" value="{{ daily_special_price }}">
+
+
+        Special Instructions:<br>
+        <textarea name="instructions" rows="4" cols="40"></textarea><br><br>
+
+        Delivery or Pickup:<br>
+        <input type="radio" name="d/p" value="Delivery" required> Delivery<br>
+        <input type="radio" name="d/p" value="Pickup" required> Pickup<br><br>
+
+        Delivery Address: <input type="text" name="address"><br><br>
+
+
+        Payment Method:<br>
+        <input type="radio" name="payment" value="Cash" required> Cash<br>
+        <input type="radio" name="payment" value="Card" required> Card<br><br>
+
+
+        Name: <input type="text" name="name"><br><br>
+        Email: <input type="email" name="email"><br><br>
+        Phone: <input type="tel" name="phone"><br><br>
+
+        <input type="submit">
+
+    </form>
+</div>
+
+{% endblock %}
