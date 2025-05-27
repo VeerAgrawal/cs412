@@ -1,0 +1,12 @@
+
+{% extends "mini_fb/base.html" %}
+
+{% block content %}
+<h2>{{ object.firstName }} {{ object.lastName }}</h2>
+
+<img src="{{ object.image_url }}" alt="{{ object.firstName }}'s picture" height="200">
+
+<p><strong>City:</strong> {{ object.city }}</p>
+<p><strong>Email:</strong> {{ object.email }}</p>
+
+{% endblock %}

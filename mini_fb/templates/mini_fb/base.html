@@ -1,0 +1,41 @@
+
+{% load static %}
+
+<html>
+    <head>
+        <title>Mini FaceBook</title>
+        <link rel="stylesheet" href="{% static 'styles_minifb.css' %}">
+    </head>
+
+    <body>
+        <div class="page-container">
+        <div class="header">
+            <h1> Welcome to Mini FB! </h1>
+
+        </div>
+
+        <div class="sidebar"> 
+
+         <nav>
+            <ul>
+                <li><a href="{% url 'show_all_profiles' %}">Home Page</a></li>
+            </ul>
+          </nav>
+
+        </div>   
+        
+        <div class="main-content">
+        {% block content %}
+        {% endblock %}
+        </div>
+
+    </div>
+    </body>
+
+    <footer class="footer">
+        
+        Basic Social Media Platform! <br>
+        Brought to you By Veer Agrawal
+
+    </footer>
+</html>
