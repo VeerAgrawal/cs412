@@ -1,3 +1,9 @@
+<!-- 
+File: main.html  
+Author: Veer Agrawal (veer1@bu.edu), 5/27/2025  
+Description: Homepage template for Indian Delights.
+-->
+
 {% extends 'restaurant/base.html' %}
 {% load static %}
 
@@ -9,6 +15,14 @@
 Our fake chefs prepare every dish with imaginary spices flown in from the mountains of Delhi and the dreamlands of Punjab. 
 From creamy curries to crunchy samosas, our menu promises satisfaction you’ll never actually taste. </p>
 
+<h2>Hours of Operation</h2>
+<table class="hours-table">
+      <tr><th>Day</th><th>Hours</th></tr>
+      <tr><td>Monday to Thurdsday</td><td>11:00 AM - 10:00 PM</td></tr>
+      <tr><td>Friday</td><td>12:00 pm - 1:00 am</td></tr>
+      <tr><td>Saturday</td><td>12:00 PM - 11:00 PM</td></tr>
+      <tr><td>Sunday</td><td>Closed</td></tr>
+</table>
 
 <div class="image">
    <img src="{% static 'images/' %}restaurantImage.png" alt="image">

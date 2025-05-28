@@ -1,3 +1,8 @@
+# File: views.py
+# Author: Veer Agrawal (veer1@bu.edu), 5/27/2025
+# Description: Logic for rendering the main homepage, order page, and a confirmation page.
+
+
 from django.shortcuts import render
 import datetime
 import time
@@ -6,7 +11,8 @@ import random
 # Create your views here.
 
 def home(request):
-    
+    """Render the homepage with the current date."""
+
     template_name = "restaurant/main.html"
 
     context = {
@@ -19,6 +25,9 @@ def home(request):
 
 
 def order(request):
+
+    """Render the order page with a randomly selected daily special."""
+
 
     template_name = "restaurant/order.html"
 
@@ -41,6 +50,7 @@ def order(request):
     return render(request, template_name, context)
 
 def confirmation(request):
+    """Process the order form, calculate total, and render confirmation page."""
 
     template_name = "restaurant/confirmation.html"
     
