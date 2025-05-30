@@ -1,3 +1,7 @@
+# File: urls.py  
+# Author: Veer Agrawal (veer1@bu.edu), 5/27/2025  
+# Description: URL patterns or the Mini Facebook app.
+
 from django.urls import path
 from .views import ShowAllProfilesView, ShowProfilePageView
 
