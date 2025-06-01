@@ -1,0 +1,20 @@
+<!-- 
+File: create_profile_form.html  
+Author: Veer Agrawal (veer1@bu.edu), 5/31/2025  
+Description: Template for creating a new user profile
+-->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Create a New Profile</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <button type="submit">Create Profile</button>
+</form>
+{% endblock %}

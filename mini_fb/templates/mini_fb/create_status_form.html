@@ -1,0 +1,23 @@
+<!-- 
+File: create_status_form.html  
+Author: Veer Agrawal (veer1@bu.edu), 5/31/2025  
+Description: Form to create a new status message for a profile.
+-->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2>Post a Status Message for {{ profile.firstName }} {{ profile.lastName }}</h2>
+
+<form method="POST" action="{% url 'create_status' profile.pk %}">
+    {% csrf_token %}
+
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <button type="submit">Post Status</button>
+</form>
+
+<p><a href="{% url 'show_profile' profile.pk %}">Back to Profile</a></p>
+{% endblock %}

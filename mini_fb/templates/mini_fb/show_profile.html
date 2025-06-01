@@ -1,6 +1,6 @@
 <!-- 
 File: show_profile.html  
-Author: Veer Agrawal (veer1@bu.edu), 5/27/2025  
+Author: Veer Agrawal (veer1@bu.edu), 5/31/2025  
 Description: Template for displaying the detailed view of a single user profile.
 -->
 
@@ -14,5 +14,17 @@ Description: Template for displaying the detailed view of a single user profile.
 <p><strong>City:</strong> {{ object.city }}</p>
 <p><strong>Email:</strong> {{ object.email }}</p>
 
-{% endblock %}
+<hr>
 
+<p><a href="{% url 'create_status' object.pk %}"> New Status Message</a></p>
+
+<h3>Status Messages</h3>
+
+{% for msg in object.get_status_messages %}
+    <div class="status-message">
+        <p>{{ msg.message }}</p>
+        <p class="timestamp">Posted on: {{ msg.timestamp }}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}

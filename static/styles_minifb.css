@@ -64,3 +64,16 @@ html, body {
 .profile-card p {
     margin: 3px 0;
 }
+
+.status-message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.status-message .timestamp {
+    font-size: 0.9em;
+    color: gray;
+}
+
