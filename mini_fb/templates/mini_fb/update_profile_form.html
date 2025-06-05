@@ -1,0 +1,21 @@
+<!-- 
+File: update_profile_form.html  
+Author: Veer Agrawal (veer1@bu.edu)  
+Description: Form to update an existing Profile
+-->
+
+{% extends "mini_fb/base.html" %}
+
+{% block content %}
+<h2>Update Profile</h2>
+
+<form method="POST" action="{% url 'update_profile' profile.pk %}">
+    {% csrf_token %}
+    {{ form.as_table }}
+
+    <button type="submit">Save Changes</button>
+    <a href="{% url 'show_profile' profile.pk %}">
+        <button type="button">Cancel</button>
+    </a>
+</form>
+{% endblock %}

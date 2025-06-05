@@ -9,12 +9,17 @@ Description: Form to create a new status message for a profile.
 {% block content %}
 <h2>Post a Status Message for {{ profile.firstName }} {{ profile.lastName }}</h2>
 
-<form method="POST" action="{% url 'create_status' profile.pk %}">
+<form method="POST" enctype="multipart/form-data" action="{% url 'create_status' profile.pk %}">
     {% csrf_token %}
 
     <table>
         {{ form.as_table }}
     </table>
+
+    <p>
+    <label for="files">Attach image(s):</label>
+    <input type="file" name="files" multiple />
+    </p>
 
     <button type="submit">Post Status</button>
 </form>

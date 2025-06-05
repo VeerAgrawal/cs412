@@ -149,3 +149,4 @@ if socket.gethostname() == CS_DEPLOYMENT_HOSTNAME:
     STATIC_URL = '/veer1/static/'
     MEDIA_URL = '/veer1/media/'
 
+

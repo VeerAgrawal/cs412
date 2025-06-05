@@ -7,6 +7,8 @@ Description: Template for displaying the detailed view of a single user profile.
 {% extends "mini_fb/base.html" %}
 
 {% block content %}
+<p><a href="{% url 'update_profile' object.pk %}">Update Profile</a></p>
+
 <h2>{{ object.firstName }} {{ object.lastName }}</h2>
 
 <img src="{{ object.image_url }}" alt="{{ object.firstName }}'s picture" height="200">
@@ -24,7 +26,15 @@ Description: Template for displaying the detailed view of a single user profile.
     <div class="status-message">
         <p>{{ msg.message }}</p>
         <p class="timestamp">Posted on: {{ msg.timestamp }}</p>
+
+        {% for img in msg.get_images %}
+            <img src="{{ img.image_file.url }}" alt="{{ img.caption }}" height="150">
+        {% endfor %}
+        <a href="{% url 'update_status' msg.pk %}">Update</a> 
+        <a href="{% url 'delete_status' msg.pk %}">Delete</a>
+
     </div>
 {% endfor %}
+
 
 {% endblock %}

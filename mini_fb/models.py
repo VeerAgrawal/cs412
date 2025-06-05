@@ -43,7 +43,30 @@ class StatusMessage(models.Model):
     message = models.TextField()
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
 
+    def get_images(self):
+        """
+        Returns all Image objects associated with this StatusMessage via StatusImage.
+        """
+        return Image.objects.filter(statusimage__status_message=self)
+
+
     def __str__(self):
         '''Return a string representation of this object.'''
 
         return f"{self.profile.firstName} - {self.message[:30]} ({self.timestamp.strftime('%Y-%m-%d %H:%M')})"
+
+class Image(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    image_file = models.ImageField(upload_to='mini_fb_images/')
+    timestamp = models.DateTimeField(default=timezone.now)
+    caption = models.CharField(max_length=240, blank=True)
+
+    def __str__(self):
+        return f"{self.profile.firstName} - {self.caption or 'Image'}"
+
+class StatusImage(models.Model):
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    status_message = models.ForeignKey(StatusMessage, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Image {self.image.id} for StatusMessage {self.status_message.id}"
