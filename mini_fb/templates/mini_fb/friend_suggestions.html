@@ -1,0 +1,26 @@
+<!-- 
+File: friend_suggestions.html  
+Author: Veer Agrawal (veer1@bu.edu), 6/5/2025  
+Description: Displays a list of suggested friends for a given profile. allows add friend
+-->
+
+{% extends "mini_fb/base.html" %}
+
+{% block content %}
+<h2>Friend Suggestions for {{ profile.firstName }} {{ profile.lastName }}</h2>
+
+<ul>
+    {% for suggestion in suggestions %}
+        <li>
+            <img src="{{ suggestion.image_url }}" alt="{{ friend.firstName }}" class="friend-image">
+
+            {{ suggestion.firstName }} {{ suggestion.lastName }}
+            (<a href="{% url 'add_friend' profile.pk suggestion.pk %}">Add Friend</a>)
+        </li>
+    {% empty %}
+        <li>No suggestions available.</li>
+    {% endfor %}
+</ul>
+
+<p><a href="{% url 'show_profile' profile.pk %}">Back to Profile</a></p>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- 
+File: news_feed.html  
+Author: Veer Agrawal (veer1@bu.edu), 6/5/2025  
+Description: Displays news feed for a profile
+-->
+
+{% extends "mini_fb/base.html" %}
+
+{% block content %}
+<h2>{{ profile.firstName }}'s News Feed</h2>
+
+{% for status in feed %}
+    <div class="status-message">
+        <p><strong>{{ status.profile.firstName }} {{ status.profile.lastName }}</strong></p>
+        <p>{{ status.message }}</p>
+        <p class="timestamp">Posted on: {{ status.timestamp }}</p>
+
+        {% for img in status.get_images %}
+            <img src="{{ img.image_file.url }}" alt="{{ img.caption }}" height="150">
+        {% endfor %}
+    </div>
+{% empty %}
+    <p>No updates to show.</p>
+{% endfor %}
+
+<p><a href="{% url 'show_profile' profile.pk %}">Back to Profile</a></p>
+{% endblock %}
