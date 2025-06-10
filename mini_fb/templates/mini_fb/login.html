@@ -1,0 +1,18 @@
+<!-- 
+File: login.html
+Author: Veer Agrawal (veer1@bu.edu), 6/10/2025  
+Description: Login form display
+-->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <!-- redirect back to home after login -->
+    <input type="hidden" name="next" value="{% url 'show_all_profiles' %}">
+    <button type="submit">Log in</button>
+  </form>
+{% endblock %}

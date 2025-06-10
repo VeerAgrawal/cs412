@@ -1,6 +1,6 @@
 <!-- 
 File: base.html  
-Author: Veer Agrawal (veer1@bu.edu), 5/31/2025  
+Author: Veer Agrawal (veer1@bu.edu), 6/10/2025  
 Description: Base HTML template for the Mini Facebook web app.
 -->
 
@@ -15,7 +15,8 @@ Description: Base HTML template for the Mini Facebook web app.
     <body>
         <div class="page-container">
         <div class="header">
-            <h1> Welcome to Mini FB! </h1>
+        
+        <h1> Welcome to Mini FB! </h1>
 
         </div>
 
@@ -24,7 +25,19 @@ Description: Base HTML template for the Mini Facebook web app.
          <nav>
             <ul>
                 <li><a href="{% url 'show_all_profiles' %}">Home Page</a></li>
+                {% if not request.user.is_authenticated %}
                 <li><a href="{% url 'create_profile' %}">Create New Profile</a></li>
+                {% endif %}
+                
+                {% if request.user.is_authenticated %}
+                <span>Logged in as {{ request.user.username }}</span>
+                <form method="post" action="{% url 'logout' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="link-button">Log out</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                {% endif %}
             </ul>
           </nav>
 
