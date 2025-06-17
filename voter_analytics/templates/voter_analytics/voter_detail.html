@@ -1,0 +1,33 @@
+<!-- 
+File: voter_detail.html  
+Author: Veer Agrawal (veer1@bu.edu), 6/15/2025  
+Description: voter detail template
+-->
+
+{% extends 'voter_analytics/base.html' %}
+
+{% block content %}
+<h2>{{ voter.first_name }} {{ voter.last_name }}</h2>
+<p><strong>Address:</strong> {{ voter.street_number }} {{ voter.street_name }}, Apt {{ voter.apartment_number }}</p>
+<p><strong>Date of Birth:</strong> {{ voter.date_of_birth }}</p>
+<p><strong>Party:</strong> {{ voter.party_affiliation }}</p>
+<p><strong>Precinct:</strong> {{ voter.precinct_number }}</p>
+<p><strong>Registered on:</strong> {{ voter.registration_date }}</p>
+<p><strong>Voter Score:</strong> {{ voter.voter_score }}</p>
+
+<ul>
+  <li>Voted in 2020 State: {{ voter.v20state }}</li>
+  <li>Voted in 2021 Town: {{ voter.v21town }}</li>
+  <li>Voted in 2021 Primary: {{ voter.v21primary }}</li>
+  <li>Voted in 2022 General: {{ voter.v22general }}</li>
+  <li>Voted in 2023 Town: {{ voter.v23town }}</li>
+</ul>
+
+<p>
+  <a href="https://www.google.com/maps?q={{ voter.street_number }}+{{ voter.street_name }},+Newton,+MA+{{ voter.zip_code }}" target="_blank">
+    View on Google Maps
+  </a>
+</p>
+
+<a href="{% url 'voters' %}">Back to List</a>
+{% endblock %}

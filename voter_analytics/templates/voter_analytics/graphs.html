@@ -1,0 +1,30 @@
+<!-- 
+File: graph.html  
+Author: Veer Agrawal (veer1@bu.edu), 6/15/2025  
+Description: graph template
+-->
+
+{% extends 'voter_analytics/base.html' %}
+{% block content %}
+<h1>Voter Graphs</h1>
+
+<!-- Reuse the filter form -->
+{% include 'voter_analytics/search_form.html' %}
+
+<hr>
+
+<!-- Render Graphs -->
+{% if graphs %}
+  <h2>Voters by Birth Year</h2>
+  {{ graphs.birth_year_hist|safe }}
+
+  <h2>Party Affiliation</h2>
+  {{ graphs.party_pie|safe }}
+
+  <h2>Election Participation</h2>
+  {{ graphs.election_bar|safe }}
+{% else %}
+  <p>No data to show for the current filters.</p>
+{% endif %}
+
+{% endblock %}

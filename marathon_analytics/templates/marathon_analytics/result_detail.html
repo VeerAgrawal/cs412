@@ -1,0 +1,27 @@
+<!-- templates/marathon_analytics/result_detail.html -->
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        {{graph_div_splits|safe}} 
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <p>
+            {{r.first_name}} {{r.last_name}} started at {{r.start_time_of_day}} and 
+            finished at {{r.finish_time_of_day}}.
+        </p>
+        <p>
+            {{r.first_name}} {{r.last_name}} passed {{r.get_runners_passed}} other runners, 
+            and was passed by {{r.get_runners_passed_by}} others.    
+        </p>
+        
+        <p>
+            {{graph_div_passed|safe}}
+        </p>
+    </div>
+    
+</div>
+
