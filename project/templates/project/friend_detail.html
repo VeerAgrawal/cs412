@@ -1,0 +1,21 @@
+<!--
+# File: friend_detail.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Friend detail view  
+-->
+
+
+{% extends 'project/base.html' %}
+{% block title %}Friend Details{% endblock %}
+
+{% block content %}
+<h2>{{ friend.name }}</h2>
+
+{% if friend.notes %}
+  <p>{{ friend.notes }}</p>
+{% endif %}
+
+<a href="{% url 'friend-edit' friend.pk %}">Edit</a> |
+<a href="{% url 'friend-delete' friend.pk %}">Delete</a> |
+<a href="{% url 'friend-list' %}">Back to list</a>
+{% endblock %}

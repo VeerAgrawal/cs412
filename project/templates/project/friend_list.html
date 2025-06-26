@@ -1,0 +1,24 @@
+<!--
+# File: friend_list.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: List of user’s friends  
+-->
+
+{% extends 'project/base.html' %}
+{% block title %}My Friends{% endblock %}
+
+{% block content %}
+<h2>My Friends</h2>
+
+<a href="{% url 'friend-add' %}">+ Add Friend</a>
+
+<ul>
+  {% for f in friends %}
+    <li>
+      <a href="{% url 'friend-detail' f.pk %}">{{ f.name }}</a>
+    </li>
+  {% empty %}
+    <li>No friends yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,67 @@
+<!--
+# File: outfit_list.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: List of user’s outfits
+-->
+
+{% extends 'project/base.html' %}
+{% block title %}My Outfits{% endblock %}
+
+{% block content %}
+<h2>My Outfits</h2>
+
+
+
+<p class="filter-description">
+  Browse all outfits! Filter by Friends, Style, and Date.
+</p>
+
+<form method="get" class="filter-form">
+  <fieldset>
+    <legend>Friends</legend>
+    {{ filter_form.friends }}
+  </fieldset>
+
+  <fieldset>
+    <legend>Style</legend>
+    {{ filter_form.style_tag }}
+  </fieldset>
+
+  <fieldset>
+    <legend>Date Range</legend>
+    <div class="date-range">
+      From: {{ filter_form.date_from }}
+      To: {{ filter_form.date_to }}
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Specific Date</legend>
+    {{ filter_form.date_exact }}
+  </fieldset>
+  <br>
+
+  <button type="submit">Search</button>
+  <a href="{% url 'outfit-list' %}">Clear</a>
+</form>
+
+<hr>
+
+Click on Outfit to view in detail
+
+{% if outfits %}
+  <ul class="outfit-list">
+    {% for outfit in outfits %}
+      <li class="outfit-item">
+        <a href="{% url 'outfit-detail' outfit.pk %}">
+            <img src="{{ outfit.photo.url }}" alt="Outfit photo" class="outfit-photo">
+            {{ outfit.dateWorn }} — {{ outfit.styleTag.name }} <br>
+            
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No outfits match your filters.</p>
+{% endif %}
+{% endblock %}

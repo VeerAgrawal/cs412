@@ -1,0 +1,21 @@
+<!--
+# File: outfit_confirm_delete.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Confirm outfit deletion 
+-->
+
+{% extends 'project/base.html' %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<h2>Delete Outfit</h2>
+
+<p>Are you sure you want to delete this outfit?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'outfit-detail' object.pk %}">Cancel</a>
+</form>
+{% endblock %}

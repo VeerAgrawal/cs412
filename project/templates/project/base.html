@@ -1,0 +1,51 @@
+<!--
+# File: base.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Base layout and navigation  
+-->
+
+{% load static %}
+<html>
+<head>
+    <title>{% block title %}Outfit Tracker{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles_outfit.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <a href="{% url 'main' %}">Home</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'outfit-list' %}">Outfits</a>
+                <a href="{% url 'outfit-create' %}">Add Outfit</a>
+                <a href="{% url 'friend-list' %}">Friends</a>
+                <a href="{% url 'friend-add' %}">Add Friend</a>
+                <a href="{% url 'analytics' %}">Analytics</a>
+
+
+                <form action="{% url 'logout' %}" method="post" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="link-button">Logout</button>
+                </form>
+
+
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'signup' %}">Sign Up</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <h1 class="site-title">Outfit Tracker</h1>
+
+
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <p> Presented to you by Veer Agrawal! </p>
+    </footer>
+</body>
+</html>

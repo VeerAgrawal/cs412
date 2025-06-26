@@ -153,3 +153,6 @@ if socket.gethostname() == CS_DEPLOYMENT_HOSTNAME:
     MEDIA_URL = '/veer1/media/'
 
 
+LOGIN_REDIRECT_URL = '/project/'   
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = '/project/login/' 

@@ -6,6 +6,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 class StyleTag(models.Model):
     """Represents a tag/ label used to classify outfit styles."""
@@ -41,6 +42,11 @@ class addOutfit(models.Model):
     def __str__(self):
         """return string"""
         return f"{self.user.username} - {self.dateWorn}"
+    
+
+    def get_absolute_url(self):
+        """Return URL of this outfit’s detail page (Mini-FB style)."""
+        return reverse('outfit-detail', kwargs={'pk': self.pk})
 
 class OutfitFriendLink(models.Model):
     """Links an outfit to a friend who was present"""
@@ -51,3 +57,17 @@ class OutfitFriendLink(models.Model):
     def __str__(self):
         """return string"""
         return f"{self.outfit} with {self.friend}"
+
+
+
+class Profile(models.Model):
+    """
+    Represents a user profile
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='outfit_profile')
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name  = models.CharField(max_length=30, blank=True)
+
+    def __str__(self):
+        """return string"""
+        return f"{self.first_name} {self.last_name}".strip() or self.user.username

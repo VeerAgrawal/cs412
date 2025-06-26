@@ -1,0 +1,17 @@
+<!--
+# File: friend_confirm_delete.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Confirm friend deletion  
+-->
+
+
+{% extends 'project/base.html' %}
+{% block title %}Delete Friend{% endblock %}
+{% block content %}
+<h2>Delete {{ friend.name }}?</h2>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+  <a href="{% url 'friend-list' %}">Cancel</a>
+</form>
+{% endblock %}

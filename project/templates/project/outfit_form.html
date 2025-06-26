@@ -1,0 +1,20 @@
+<!--
+# File: outfit_form.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Form to create or edit outfit 
+-->
+
+{% extends 'project/base.html' %}
+
+{% block title %}Add or Edit Outfit{% endblock %}
+
+{% block content %}
+<h2>{% if object %}Edit Outfit{% else %}Add New Outfit{% endif %}</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

@@ -77,20 +77,10 @@ html, body {
     color: gray;
 }
 
-.friend-list {
-    list-style: none;
-    padding: 0;
-}
-
-.friend-list li {
-    margin-bottom: 10px;
-}
 
 .friend-image {
-    height: 50px;
-    width: 50px;
+    height: 75px;
+    width: 75px;
     object-fit: cover;
-    border-radius: 50%;
-    vertical-align: middle;
-    margin-right: 10px;
+    border-radius: 10px;
 }

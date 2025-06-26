@@ -1,0 +1,31 @@
+<!-- 
+
+# File: analytics.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Style tag analytics page  
+-->
+
+{% extends 'project/base.html' %}
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+<h2>Analytics</h2>
+
+<p>Track What Styles you wear the most!</p>
+
+<p>You can also filter by a date range:</p>
+
+<form method="get" class="filter-form">
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+
+<hr>
+
+{% if graph_div %}
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    {{ graph_div|safe }}
+{% else %}
+    <p>No outfits match the selected range.</p>
+{% endif %}
+{% endblock %}

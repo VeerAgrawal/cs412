@@ -1,0 +1,41 @@
+<!--
+# File: main.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Home page after login  
+-->
+
+
+{% extends 'project/base.html' %}
+{% block title %}Outfit Tracker – Home{% endblock %}
+
+{% block content %}
+<h1 class="app-name">Outfit Tracker</h1>
+
+<p class="app-description">
+  Keep a private log of the outfits you’ve worn, who you wore them with, and
+  when you wore them—so you never repeat the same look with the same people.
+</p>
+
+<div class="home-cards">
+  <a class="home-card" href="{% url 'outfit-list' %}">
+      <h3>Outfits</h3>
+      <p>Browse, filter, and edit all your logged outfits.</p>
+  </a>
+
+  <a class="home-card" href="{% url 'friend-list' %}">
+      <h3>Friends</h3>
+      <p>Manage the list of friends you tag in outfits.</p>
+  </a>
+
+  <a class="home-card" href="{% url 'outfit-create' %}">
+      <h3>Add Outfit</h3>
+      <p>Upload a new outfit entry with photo, date, style, and friends.</p>
+  </a>
+
+<a class="home-card" href="{% url 'analytics' %}">
+      <h3>Analytics</h3>
+      <p>Track your most worn fasion styles.</p>
+  </a>
+
+</div>
+{% endblock %}

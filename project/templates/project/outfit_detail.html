@@ -1,0 +1,39 @@
+<!--
+# File: outfit_detail.html  
+# Author: Veer Agrawal (veer1@bu.edu), 6/26/2025  
+# Description: Outfit detail view  
+-->
+
+{% extends 'project/base.html' %}
+
+{% block title %}Outfit Detail{% endblock %}
+
+{% block content %}
+<h2>Outfit Details</h2>
+
+<div class="outfit-detail">
+    <img src="{{ outfit.photo.url }}" alt="Outfit photo" class="outfit-photo-large">
+    
+    <p><strong>Date Worn:</strong> {{ outfit.dateWorn }}</p>
+    
+    {% if outfit.description %}
+        <p><strong>Description:</strong> {{ outfit.description }}</p>
+    {% endif %}
+    
+    <p><strong>Style:</strong> {{ outfit.styleTag.name }}</p>
+
+    <p><strong>Friends who were there:</strong></p>
+    <ul>
+        {% for link in friends %}
+            <li>{{ link.friend.name }}</li>
+        {% empty %}
+            <li>No friends tagged for this outfit.</li>
+        {% endfor %}
+    </ul>
+
+    <div class="outfit-actions">
+        <a href="{% url 'outfit-update' outfit.pk %}">Edit</a> |
+        <a href="{% url 'outfit-delete' outfit.pk %}">Delete</a>
+    </div>
+</div>
+{% endblock %}

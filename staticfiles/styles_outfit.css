@@ -1,0 +1,66 @@
+#list outfit css
+
+.outfit-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.outfit-item {
+    margin-bottom: 20px;
+}
+
+.outfit-photo {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.outfit-date,
+.outfit-style {
+    margin: 5px 0;
+}
+
+
+#detail outfit CSS
+.outfit-detail {
+    margin-top: 20px;
+}
+
+.outfit-photo-large {
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.outfit-actions {
+    margin-top: 15px;
+}
+
+
+#outfit form
+
+form {
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 12px;
+}
+
+
+#outfit-delete
+
+form button {
+    background-color: #c00;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 10px;
+}
+
+form a {
+    text-decoration: underline;
+    color: #333;
+}
